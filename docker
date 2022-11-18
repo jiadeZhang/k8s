@@ -1,0 +1,24 @@
+1、历史
+2006年，亚马逊成立aws，从云端存储业务开始。
+2008年，云计算初创。
+2009年，阿里云成立。目前最新的数据表明，2020年度IaaS市场份额调查，阿里云位居全球第三，亚太第一；前两名分别是亚马逊和微软，市场份额达9.5%，超过谷歌的6.1%，亚马逊40.8%，微软17%。国内市场份额40% ，第二是华为云，占18%。
+2010年，OpenStack由NASA发布。OpenStack是一个IaaS架构，可以用其架构来搭建自己的私有云，让任何人都可以自行创建和提供云计算服务。对比而言，AWS和aliyun都是自研架构，OpenStack是开源的。所以公司如果需要，完全可以接入OpenStack搭建自己的私有云。（当然前提需要有OpenStack核心开发能力）。
+2010-2013年之间，云计算的全球份额被aws和OpenStack瓜分。
+2013年开始，云计算正式进入了PaaS时代。vmware创立的Cloud Foundry只需要一条命令 cf push 就可以把项目压缩，上传到服务器，在云主机为用户创建容器，下载压缩包，解压执行。
+在docker出现之前，inux上的namespace机制和cgroups命令都能用做资源隔离和限制，这些都是容器技术
+2010年 docker【原名dotCloud】，创新使用镜像概念，快速部署
+
+2、容器基础，Namespace和Cgroup
+容器：本质是linux中一个特殊进程，对一个进程的状态、数据进行隔离和限制
+Linux Namespace:该功能对内核资源进行分区，以使一组进程看到一组资源，而另一组进程看到另一组资源。
+Mount namespaces
+UTS namespaces
+IPC namespaces
+PID namespaces
+Network namespaces
+User namespaces
+
+底层实现，创建线程时使用CLONE_NEWPID则会在一个全新的进程空间，pid等于1
+int pid = clone(main_function, stack_size, CLONE_NEWPID | SIGCHLD, NULL);
+Cgroup 限制资源使用，2006年google工程师开发的一个程序，限制一个进程组使用的cpu,内存,磁盘，带宽上限
+
